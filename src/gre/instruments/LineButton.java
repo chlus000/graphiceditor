@@ -3,7 +3,7 @@ package gre.instruments;
 import gre.shapes.*;
 import javax.swing.JButton;
 
-public class LineButton extends JButton{
+public class LineButton extends BaseButton{
     BaseShape bs=new Line();
     
     public LineButton(String name){

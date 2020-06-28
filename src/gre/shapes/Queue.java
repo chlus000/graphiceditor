@@ -1,31 +1,26 @@
 package gre.shapes;
 
-import gre.instruments.LineButton;
-import gre.palette.BasePalette;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class Queue {
     ArrayList<BaseShape> shapes=new ArrayList<>();
-    ArrayList<BasePalette> color = new ArrayList<>();
+    Color color;
     
     public int getSize(){
         return shapes.size();
     }
     
-    public void addShape(BaseShape bs, BasePalette bp){
+    public void addShape(BaseShape bs){
+        bs.SetColor(this.color);
         shapes.add(bs);
-        color.add(bp);
     }
     
-    public void changeColor(BasePalette bp){
-        color.set(color.size()-1, bp);
+    public void changeColor(Color color){
+        this.color=color;
     }
     
-    public BasePalette getLastColor(){
-        if (shapes.isEmpty()) return null;
-        return color.get(color.size()-1);
-    }
     
     public BaseShape getLastShape(){
         if (shapes.isEmpty()) return null;
@@ -34,12 +29,7 @@ public class Queue {
     
     public void paintShapes(Graphics g){
         for (int i=0; i<shapes.size ();i++){
-            shapes.get(i).setNColor(color.get(i));
             shapes.get(i).paintShape(g);
         }
-       /* for (BaseShape bas: shapes ){
-            bas.setColor(color.get)
-            bas.paintShape(g);
-        }*/
     }
 }

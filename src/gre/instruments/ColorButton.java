@@ -1,27 +1,27 @@
 
 package gre.instruments;
 
-import gre.palette.BasePalette;
 import gre.shapes.BaseShape;
 import gre.shapes.*;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
-public class ColorButton extends BaseButton {
-    //BasePalette bp = new BasePalette();
-    
-    public ColorButton(String name){
-        super(name);
-    }
-    
-   /* public BasePalette getColor(){
-        return new BasePalette();
-    }*/
-    
-    public BaseShape createNewShape(BaseShape or){ //добавить остальные фигуры
-        if (or instanceof Line) return new Line();
-        if (or instanceof SimpleLine) return new SimpleLine();
-        if (or instanceof Rect) return new Rect();
-        if (or instanceof Oval) return new Oval();
-        if (or instanceof Polygon) return new Polygon();
-        return null;    
+public class ColorButton extends JButton {
+
+    public ColorButton(Color color, Queue q){
+        super();
+        this.setBackground(color);
+        this.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                if (q.getLastShape()!=null){
+                    q.getLastShape().SetColor(color);
+                }
+                q.changeColor(color);
+            }
+
+        });
     }
 }

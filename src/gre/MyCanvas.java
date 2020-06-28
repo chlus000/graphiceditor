@@ -12,8 +12,6 @@ import javax.swing.*;
 
 public class MyCanvas extends JPanel
 {
-    //Integer mx;
-    //Integer my;
     MyCanvas mcan;
     BufferedImage buf=null;
     Graphics buffer=null;
@@ -45,16 +43,17 @@ public class MyCanvas extends JPanel
 
             @Override
             public void mousePressed(MouseEvent e) {
-                //mx=e.getX();
-                //my=e.getY();
-                q.getLastShape().addCoordinate(e.getX(),e.getY());
+                q.getLastShape().addCoordinate(e.getPoint());
+                q.getLastShape().putMoveCoordinate(e.getPoint());
                 mcan.paintToBuffer();
                 mcan.repaint();
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                
+                q.getLastShape().putCanvasCoordinate(e.getPoint());
+                mcan.paintToBuffer();
+                mcan.repaint();
             }
 
             @Override
@@ -71,16 +70,13 @@ public class MyCanvas extends JPanel
 
             @Override
             public void mouseDragged(MouseEvent e) {
-                
+                q.getLastShape().putMoveCoordinate(e.getPoint());
+                mcan.paintToBuffer();
+                mcan.repaint();
             }
 
             @Override
             public void mouseMoved(MouseEvent e) {
-                //mx=e.getX();
-                //my=e.getY();
-                q.getLastShape().putCanvasCoordinate(e.getX(),e.getY());
-                mcan.paintToBuffer();
-                mcan.repaint();
             }
             
         });
@@ -97,8 +93,6 @@ public class MyCanvas extends JPanel
     public void paint(Graphics g)
     {
         g.drawImage(buf, 0, 0, mcan);
-        //g.setColor(Color.white);
-        //g.fillRect(60,80,850,550);
     }
     
 }

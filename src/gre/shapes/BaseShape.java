@@ -1,21 +1,19 @@
 package gre.shapes;
 
-import gre.palette.BasePalette;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.geom.Point2D;
 
 
 public abstract class BaseShape {
-    //public BaseButton(String name){
-        //super(name);
-    //}
     
-    public void addCoordinate(int x, int y){  
-    }
+    abstract public void addCoordinate(Point2D point);
     
-    public void putCanvasCoordinate(int x, int y){
-    }
+    abstract public void putCanvasCoordinate(Point2D point);
     
-    public void paintShape(Graphics g){}
-    public void delLastCoordinate(){}
-    public void setNColor(BasePalette bp){}
+    abstract public void paintShape(Graphics g);
+    abstract public void SetColor(Color bp);
+
+    abstract public void putMoveCoordinate(Point2D point);
 }

@@ -1,59 +1,53 @@
 
 package gre.shapes;
 
-import gre.palette.BasePalette;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Rect extends BaseShape{
-    ArrayList<Integer> y = new ArrayList<>();
-    ArrayList<Integer> x = new ArrayList<>(); 
+    int y ;
+    int x ; 
     int xp, yp;
     int r, gr, b;
+    Color color;
+    private List<Point2D> coordinates=new ArrayList<Point2D>();
     
     @Override
-    public void addCoordinate(int x, int y){
-        this.y.add(y);
-        this.x.add(x);
+    public void SetColor(Color color){
+        this.color=color;
     }
     
     @Override
-    public void putCanvasCoordinate(int x, int y){
-        xp=x;
-        yp=y;
+    public void addCoordinate(Point2D point){
+        this.coordinates.add(point);
+        this.x=((int)point.getX());
+        this.y=((int)point.getY());
     }
     
     @Override
-    public void delLastCoordinate(){
-        if (!x.isEmpty() & x.size()%2==1){
-            x.remove(x.size()-1);
-            y.remove(y.size()-1);
-        }
-        if (xp!=0) {
-            xp=0;
-            yp=0;
-        }
+    public void putCanvasCoordinate(Point2D point){
+        this.coordinates.add(point);
+        xp=(int)point.getX();
+        yp=(int)point.getY();
     }
+    
+    @Override
+    public void putMoveCoordinate(Point2D point){
+        xp=(int)point.getX();
+        yp=(int)point.getY();
+    }
+    
     
     @Override
     public void paintShape(Graphics g){
-        g.setColor(new Color(r,gr,b));
-        for (int i=1;i<x.size();i+=2){
-            g.drawRect(Math.min(x.get(i-1), x.get(i)), Math.min(y.get(i-1), y.get(i)), Math.abs(x.get(i-1)- x.get(i)), Math.abs(y.get(i-1)- y.get(i)));
-        };
-        if ((!x.isEmpty())& (x.size()%2!=0)&(xp!=0)){
-            g.drawRect(Math.min(x.get(x.size()-1),xp), Math.min(y.get(y.size()-1),yp), Math.abs(x.get(y.size()-1)-xp), Math.abs(y.get(y.size()-1)-yp));
+        g.setColor(color);
+        g.drawRect(Math.min(x,xp), Math.min(y,yp), Math.abs(x-xp), Math.abs(y-yp));
+    
+    }
+    
 
-        }
-    
-    }
-    
-    @Override
-    public void setNColor(BasePalette bp){
-        this.r=bp.getR();
-        this.gr=bp.getG();
-        this.b=bp.getB();
-    }
-   }
+}
