@@ -8,11 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Oval extends BaseShape{
-    int y ;
-    int x ; 
-    int xp, yp;
-    int r, gr, b;
-    Color color;
+    private int y ;
+    private int x ; 
+    private int xp, yp;
+    private Color color;
     private List<Point2D> coordinates=new ArrayList<Point2D>();
     
     @Override
@@ -47,5 +46,24 @@ public class Oval extends BaseShape{
         g.drawOval(Math.min(x,xp), Math.min(y,yp), Math.abs(x-xp), Math.abs(y-yp));
     }
     
+    @Override
+    public String getType() {
+        return "Oval";
+    }
 
+    @Override
+    public List<Point2D> getPoints() {
+        return coordinates;
+    }
+
+    @Override
+    public Color getColor() {
+       return color;
+    }
+    
+    @Override
+    public void setCoordinates(List<Point2D> points) {
+        addCoordinate(points.get(0));
+        putCanvasCoordinate(points.get(points.size()-1));
+    }
 }

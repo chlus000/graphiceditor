@@ -5,8 +5,12 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class Queue {
-    ArrayList<BaseShape> shapes=new ArrayList<>();
-    Color color;
+    private ArrayList<BaseShape> shapes=new ArrayList<>();
+    private Color color;
+    
+    public ArrayList<BaseShape> getQueue(){
+        return shapes;
+    }
     
     public int getSize(){
         return shapes.size();
@@ -31,5 +35,9 @@ public class Queue {
         for (int i=0; i<shapes.size ();i++){
             shapes.get(i).paintShape(g);
         }
+    }
+    
+    public void refresh(){
+        shapes.clear();
     }
 }

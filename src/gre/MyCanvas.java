@@ -7,17 +7,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import javax.swing.*;
 
 public class MyCanvas extends JPanel
 {
-    MyCanvas mcan;
-    BufferedImage buf=null;
-    Graphics buffer=null;
-    int width=0;
-    int height=0;
-    Queue q=null;
+    private MyCanvas mcan;
+    private BufferedImage buf=null;
+    private Graphics buffer=null;
+    private int width=0;
+    private int height=0;
+    private Queue q=null;
     
     
     public MyCanvas(int width, int height, Queue q){
@@ -93,6 +92,10 @@ public class MyCanvas extends JPanel
     public void paint(Graphics g)
     {
         g.drawImage(buf, 0, 0, mcan);
+    }
+    
+    public BufferedImage getBuf(){
+       return buf; 
     }
     
 }

@@ -8,11 +8,10 @@ import java.util.List;
 
 
 public class Line extends BaseShape{
-    ArrayList<Integer> x = new ArrayList<>(); 
-    ArrayList<Integer> y = new ArrayList<>();
-    Color color;
-    int[] px,py;
-    int r, gr, b;
+    private ArrayList<Integer> x = new ArrayList<>(); 
+    private ArrayList<Integer> y = new ArrayList<>();
+    private Color color;
+    private int[] px,py;
     private List<Point2D> coordinates=new ArrayList<Point2D>();
     
     @Override
@@ -49,6 +48,28 @@ public class Line extends BaseShape{
             py[i]=y.get(i);
         }
         g.drawPolyline(px, py, x.size());
+    }
+
+    @Override
+    public String getType() {
+        return "Polyline";
+    }
+
+    @Override
+    public List<Point2D> getPoints() {
+        return coordinates;
+    }
+
+    @Override
+    public Color getColor() {
+       return color;
+    }
+
+    @Override
+    public void setCoordinates(List<Point2D> points) {
+        for (int i=0; i<points.size();i++){
+            addCoordinate(points.get(i));
+        }
     }
     
     

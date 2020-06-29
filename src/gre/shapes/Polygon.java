@@ -7,11 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Polygon extends BaseShape{
-    ArrayList<Integer> x = new ArrayList<>(); 
-    ArrayList<Integer> y = new ArrayList<>();
-    Color color;
-    int[] px,py;
-    int r, gr, b;
+    private ArrayList<Integer> x = new ArrayList<>(); 
+    private ArrayList<Integer> y = new ArrayList<>();
+    private Color color;
+    private int[] px,py;
     private List<Point2D> coordinates=new ArrayList<Point2D>();
     
     @Override
@@ -50,5 +49,25 @@ public class Polygon extends BaseShape{
         g.drawPolygon(px, py, x.size());
     }
     
+    @Override
+    public String getType() {
+        return "Polygon";
+    }
+
+    @Override
+    public List<Point2D> getPoints() {
+        return coordinates;
+    }
+
+    @Override
+    public Color getColor() {
+       return color;
+    }
     
+    @Override
+    public void setCoordinates(List<Point2D> points) {
+        for (int i=0; i<points.size();i++){
+            addCoordinate(points.get(i));
+        }
+    }
 }
