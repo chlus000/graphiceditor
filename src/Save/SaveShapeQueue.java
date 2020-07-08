@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class SaveShapeQueue implements Serializable{
     private static final long serialVersionUID = 1L;
     private List<SaveShape> shapes;
+
     SaveShapeQueue(){
         shapes=new ArrayList<SaveShape>();
     }

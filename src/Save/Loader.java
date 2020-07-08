@@ -3,7 +3,6 @@ package Save;
 
 import gre.MyCanvas;
 import gre.shapes.*;
-import gre.shapes.Queue;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;

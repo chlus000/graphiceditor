@@ -16,14 +16,14 @@ public class GrE extends JFrame{
     public GrE()
     {
         super("Графический редактор Лапоха и Лутошкина");
-        this.setSize(800,700);
+        this.setSize(1000,800);
         fr=this;
         this.setVisible(true);
         this.setLayout(null);
         this.q=new Queue();
-        jp=new MyCanvas(650,550,q);
+        jp=new MyCanvas(850,650,q);
         jp.setVisible(true);
-        jp.setBounds(60,80,650,550);
+        jp.setBounds(60,80,850,650);
         
         JButton Line=new ButtonShape("Polyline",q);
         Line.setBounds(20, 20, 90,30);
@@ -76,12 +76,6 @@ public class GrE extends JFrame{
         this.add(load);
         this.repaint();
     }
-    
-    @Override
-    public void paint(Graphics g)
-    {
-        super.paint(g);
-    }  
     
     public static void main(String args[]) 
     {

@@ -83,7 +83,7 @@ public class MyCanvas extends JPanel
     
     public void paintToBuffer(){
         buffer.setColor(Color.white);
-        buffer.fillRect(0, 0, 650, 550);
+        buffer.fillRect(0, 0, 850, 650);
         buffer.setColor(Color.black);
         q.paintShapes(buffer);
     }
