@@ -3,8 +3,9 @@ package gre.instruments;
 import gre.shapes.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
-public class ButtonShape extends BaseButton{
+public class ButtonShape extends JButton{
     
     public ButtonShape(String name, Queue q) {
         super(name);

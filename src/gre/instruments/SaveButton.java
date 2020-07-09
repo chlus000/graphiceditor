@@ -9,9 +9,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 
 
-public class SaveButton extends BaseButton {
+public class SaveButton extends JButton {
     public SaveButton(MyCanvas jp){
         super("Save");
         this.addActionListener(new ActionListener() {

@@ -3,8 +3,14 @@ package gre;
 
 import gre.instruments.*;
 import gre.shapes.Queue;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Toolkit;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import javax.swing.*;
 
 public class GrE extends JFrame{
@@ -12,18 +18,25 @@ public class GrE extends JFrame{
     private MyCanvas jp;
     private Queue q;
     private JFrame fr;
+    private int width=850;
+    private int height=650;
     
     public GrE()
     {
         super("Графический редактор Лапоха и Лутошкина");
+        Dimension sizes = Toolkit.getDefaultToolkit().getScreenSize();
+        width = (int)sizes.getWidth();
+        height = (int)sizes.getHeight();
         this.setSize(1000,800);
+
+        
         fr=this;
         this.setVisible(true);
         this.setLayout(null);
         this.q=new Queue();
-        jp=new MyCanvas(850,650,q);
+        jp=new MyCanvas(width,height,q);
         jp.setVisible(true);
-        jp.setBounds(60,80,850,650);
+        jp.setBounds(60,80,width,height);
         
         JButton Line=new ButtonShape("Polyline",q);
         Line.setBounds(20, 20, 90,30);
@@ -37,19 +50,19 @@ public class GrE extends JFrame{
         JButton Polygon=new ButtonShape("Polygon",q);
         Polygon.setBounds(330, 20, 100,30);
         
-        JButton blue=new ColorButton(Color.BLUE,q);
+        JButton blue=new ColorButton(Color.BLUE,jp);
         blue.setBounds(20, 80, 30,30);
-        JButton red=new ColorButton(Color.RED,q);
+        JButton red=new ColorButton(Color.RED,jp);
         red.setBounds(20, 110, 30,30);
-        JButton green=new ColorButton(Color.GREEN,q);
+        JButton green=new ColorButton(Color.GREEN,jp);
         green.setBounds(20, 140, 30,30);
-        JButton black=new ColorButton(Color.BLACK,q);
+        JButton black=new ColorButton(Color.BLACK,jp);
         black.setBounds(20, 170, 30,30);
-        JButton yellow=new ColorButton(Color.YELLOW,q);
+        JButton yellow=new ColorButton(Color.YELLOW,jp);
         yellow.setBounds(20, 200, 30,30);
-        JButton gray=new ColorButton(Color.GRAY,q);
+        JButton gray=new ColorButton(Color.GRAY,jp);
         gray.setBounds(20, 230, 30,30);
-        JButton magenta=new ColorButton(Color.MAGENTA,q);
+        JButton magenta=new ColorButton(Color.MAGENTA,jp);
         magenta.setBounds(20, 260, 30,30);
         
         JButton save=new SaveProject(q);
@@ -77,6 +90,17 @@ public class GrE extends JFrame{
         this.repaint();
     }
     
+    @Override
+    public void paint (Graphics g){
+        Dimension sizez=fr.getBounds().getSize();
+        width = (int)sizez.getWidth();
+        height = (int)sizez.getHeight();
+        
+        jp.setBounds(60, 80, width-100, height-150);
+        
+        super.paint (g);
+    }
+    
     public static void main(String args[]) 
     {
         GrE app=new GrE();
@@ -86,4 +110,5 @@ public class GrE extends JFrame{
         
     }
 }
+
 

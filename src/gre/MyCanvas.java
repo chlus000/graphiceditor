@@ -42,17 +42,21 @@ public class MyCanvas extends JPanel
 
             @Override
             public void mousePressed(MouseEvent e) {
-                q.getLastShape().addCoordinate(e.getPoint());
-                q.getLastShape().putMoveCoordinate(e.getPoint());
-                mcan.paintToBuffer();
-                mcan.repaint();
+                if (q.getLastShape()!=null){
+                    q.getLastShape().addCoordinate(e.getPoint());
+                    q.getLastShape().putMoveCoordinate(e.getPoint());
+                    mcan.paintToBuffer();
+                    mcan.repaint();
+                }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                q.getLastShape().putCanvasCoordinate(e.getPoint());
-                mcan.paintToBuffer();
-                mcan.repaint();
+                if (q.getLastShape()!=null){
+                    q.getLastShape().putCanvasCoordinate(e.getPoint());
+                    mcan.paintToBuffer();
+                    mcan.repaint();
+                }
             }
 
             @Override
@@ -69,9 +73,11 @@ public class MyCanvas extends JPanel
 
             @Override
             public void mouseDragged(MouseEvent e) {
-                q.getLastShape().putMoveCoordinate(e.getPoint());
-                mcan.paintToBuffer();
-                mcan.repaint();
+                if (q.getLastShape()!=null){
+                    q.getLastShape().putMoveCoordinate(e.getPoint());
+                    mcan.paintToBuffer();
+                    mcan.repaint();
+                }
             }
 
             @Override
@@ -83,7 +89,7 @@ public class MyCanvas extends JPanel
     
     public void paintToBuffer(){
         buffer.setColor(Color.white);
-        buffer.fillRect(0, 0, 850, 650);
+        buffer.fillRect(0, 0, width, height);;
         buffer.setColor(Color.black);
         q.paintShapes(buffer);
     }
@@ -96,6 +102,13 @@ public class MyCanvas extends JPanel
     
     public BufferedImage getBuf(){
        return buf; 
+    }
+    
+    public void changeColor (Color color){
+        if (q.getLastShape()!=null){
+            q.getLastShape().SetColor(color);
+        }
+        q.changeColor(color);
     }
     
 }

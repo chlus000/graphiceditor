@@ -8,8 +8,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 
-public class LoadProject extends BaseButton{
+public class LoadProject extends JButton{
     public LoadProject(Queue q, MyCanvas jp){
         super("Load");
         this.addActionListener(new ActionListener(){

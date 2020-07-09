@@ -7,8 +7,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 
-public class SaveProject extends BaseButton{
+public class SaveProject extends JButton{
     public SaveProject(Queue q){
         super("Save Project");
         this.addActionListener(new ActionListener(){
